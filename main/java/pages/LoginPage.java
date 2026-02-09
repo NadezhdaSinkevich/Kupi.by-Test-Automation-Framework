@@ -21,6 +21,13 @@ public class LoginPage {
     public String testEmail = "hehe@rambler.ru";
     public String testPassword = "qwerty";
 
+    public String errorMessageMinBoundary = "Количество символов должно быть не менее 4.";
+    public String errorMessageMaxBoundaryPassword = "Количество символов в поле Пароль не может превышать 255.";
+    public String errorMessageMaxBoundaryEmail = "Количество символов в поле E-Mail адрес не может превышать 255.";
+    public String errorMessageEmptyField = "Поле не может быть пустым";
+    public String errorMessageIncorrectFormatEmail = "Неверный email";
+
+
     private WebDriver driver;
 
     public LoginPage() {
