@@ -26,165 +26,165 @@ public class TestValidationLoginPage {
     @Test
     public void testMinBoundaryPassword(){
         loginPage.inputPassword(dataGenerate.getMinBoundaryPassword());
-        loginPage.inputEmail(loginPage.testEmail);
+        loginPage.inputEmail(dataGenerate.getCorrectEmail());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Количество символов должно быть не менее 4.",loginPage.getTextErrorMessagePassword());
+        Assertions.assertEquals(loginPage.errorMessageMinBoundary,loginPage.getTextErrorMessagePassword());
     }
 
     @Test
     public void testMaxBoundaryPassword(){
         loginPage.inputPassword(dataGenerate.getMaxBoundaryPassword());
-        loginPage.inputEmail(loginPage.testEmail);
+        loginPage.inputEmail(dataGenerate.getCorrectEmail());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Количество символов в поле Пароль не может превышать 255.",loginPage.getTextErrorMessagePassword());
+        Assertions.assertEquals(loginPage.errorMessageMaxBoundaryPassword,loginPage.getTextErrorMessagePassword());
     }
 
     @Test
     public void testMaxBoundaryEmail(){
         loginPage.inputEmail(dataGenerate.getMaxBoundaryEmail());
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Количество символов в поле E-Mail адрес не может превышать 255.",loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageMaxBoundaryEmail,loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void testEmptyPassword(){
         loginPage.inputPassword("");
-        loginPage.inputEmail(loginPage.testEmail);
+        loginPage.inputEmail(dataGenerate.getCorrectEmail());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Поле не может быть пустым", loginPage.getTextErrorMessagePassword());
+        Assertions.assertEquals(loginPage.errorMessageEmptyField, loginPage.getTextErrorMessagePassword());
     }
 
     @Test
     public void testEmptyEmail(){
         loginPage.inputEmail("");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Поле не может быть пустым", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageEmptyField, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void testSpacesPassword(){
         loginPage.inputPassword("  ");
-        loginPage.inputEmail(loginPage.testEmail);
+        loginPage.inputEmail(dataGenerate.getCorrectEmail());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Поле не может быть пустым", loginPage.getTextErrorMessagePassword());
+        Assertions.assertEquals(loginPage.errorMessageEmptyField, loginPage.getTextErrorMessagePassword());
     }
 
     @Test
     public void testSpacesEmail(){
         loginPage.inputEmail("  ");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Поле не может быть пустым", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageEmptyField, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test1FormatRegexEmail(){
         loginPage.inputEmail("hehe@ramblerru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test2FormatRegexEmail(){
         loginPage.inputEmail("heherambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test3FormatRegexEmail(){
         loginPage.inputEmail("he he@rambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test4FormatRegexEmail(){
         loginPage.inputEmail("hehe@rambler. ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test5FormatRegexEmail(){
         loginPage.inputEmail("@rambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test6FormatRegexEmail(){
         loginPage.inputEmail("hehe@.");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test7FormatRegexEmail(){
         loginPage.inputEmail("hehe@@rambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test8FormatRegexEmail(){
         loginPage.inputEmail("hehe@ддд.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test9FormatRegexEmail(){
         loginPage.inputEmail("he№$#he@rambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test10FormatRegexEmail(){
         loginPage.inputEmail("hehe@ram№$#bler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test11FormatRegexEmail(){
         loginPage.inputEmail("хехе@rambler.ru");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test12FormatRegexEmail(){
         loginPage.inputEmail("hehe@rambler.r1u");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @Test
     public void test13FormatRegexEmail(){
         loginPage.inputEmail("hehe@rambler.r$#u");
-        loginPage.inputPassword(loginPage.testPassword);
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
         loginPage.clickButtonLogin();
-        Assertions.assertEquals("Неверный email", loginPage.getTextErrorMessageEmail());
+        Assertions.assertEquals(loginPage.errorMessageIncorrectFormatEmail, loginPage.getTextErrorMessageEmail());
     }
 
     @AfterEach
     public void closeLoginPage() {
-        Driver.quitDriver();
+       Driver.quitDriver();
     }
 }
