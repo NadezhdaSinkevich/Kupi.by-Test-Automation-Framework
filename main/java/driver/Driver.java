@@ -50,4 +50,8 @@ public class Driver {
     public static void waitAndInputText(By xpath, String text){
         wait(xpath).sendKeys(text);
     }
+
+    public static void waitAndClearField(By xpath){
+        wait(xpath).clear();
+    }
 }

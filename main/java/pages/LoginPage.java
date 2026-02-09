@@ -8,15 +8,21 @@ public class LoginPage {
     public By labelMainPath = By.xpath("//form[@class='form-authorization form _show']/div[@class='form__title']");
     public By emailPath = By.xpath("//input[@id='form-authorization-email']");
     public By passwordPath = By.xpath("//input[@id='form-authorization-password']");
-    public By textButtonLoginPath = By.xpath("//button[@class='form-authorization__button form-button-primary']");
+    public By buttonLoginPath = By.xpath("//button[@class='form-authorization__button form-button-primary']");
     public By errorMessageEmailPath = By.xpath("//form[@id='form-authorization']/div[@class='form-field'][1]/div[@class='form-field-error-message']");
     public By errorMessagePasswordPath = By.xpath("//form[@id='form-authorization']/div[@class='form-field'][2]/div[@class='form-field-error-message']");
-    public By buttonLoginPath = By.xpath("//button[@class='form-authorization__button form-button-primary']");
+    public By buttonForgotPasswordPath = By.xpath("//div[@class='form-field']/button[@class='form-authorization__button form-button-default']");
+    public By buttonRegistrationPath = By.xpath("//div[@class='form-field form-field--center']/button[@class='form-authorization__button form-button-default']");
+    public By buttonCloseLoginPagePath = By.xpath("//div[@class='dialog-authorization__inner']/button[@class='button-close button']");
+    public By iconCloseLoginPagePath = By.xpath("//div[@class='dialog-authorization__inner']/button[@class='button-close button']/*[local-name()=\"svg\"]/*[local-name()=\"use\"]");
 
     public String labelMainText = "Личный кабинет";
     public String placeholderEmailText = "Ваш email";
     public String placeholderPasswordText = "Пароль";
     public String buttonLoginText = "Войти";
+    public String buttonForgotPasswordText = "Забыли пароль?";
+    public String buttonRegistrationText = "Зарегистрироваться";
+    public String iconCloseLoginPageHref = "#icon-close";
 
     public String testEmail = "hehe@rambler.ru";
     public String testPassword = "qwerty";
@@ -46,8 +52,16 @@ public class LoginPage {
         return Driver.waitAndGetTextByAttribute(passwordPath,"placeholder");
     }
 
+    public void clearFieldPassword(){
+        Driver.waitAndClearField(passwordPath);
+    }
+
+    public void clearFieldEmail(){
+        Driver.waitAndClearField(emailPath);
+    }
+
     public String getTextButtonLogin(){
-        return Driver.waitAndGetText(textButtonLoginPath);
+        return Driver.waitAndGetText(buttonLoginPath);
     }
 
     public String getTextErrorMessageEmail(){
@@ -68,5 +82,29 @@ public class LoginPage {
 
     public void clickButtonLogin(){
         Driver.waitAndClick(buttonLoginPath);
+    }
+
+    public String getTextButtonForgotPassword(){
+        return Driver.waitAndGetText(buttonForgotPasswordPath);
+    }
+
+    public String getTextButtonRegistration(){
+        return Driver.waitAndGetText(buttonRegistrationPath);
+    }
+
+    public void clickButtonCloseLoginForm(){
+        Driver.waitAndClick(buttonCloseLoginPagePath);
+    }
+
+    public void clickButtonForgotPassword(){
+        Driver.waitAndClick(buttonForgotPasswordPath);
+    }
+
+    public void clickButtonRegistration(){
+        Driver.waitAndClick(buttonRegistrationPath);
+    }
+
+    public String getIconCloseLoginPageHref(){
+        return Driver.waitAndGetTextByAttribute(iconCloseLoginPagePath,"href");
     }
 }
