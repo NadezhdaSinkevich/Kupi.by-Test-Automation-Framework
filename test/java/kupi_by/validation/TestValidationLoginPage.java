@@ -7,10 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.DataFaker;
 
 public class TestValidationLoginPage {
     private LoginPage loginPage;
     private HomePage homePage;
+    private DataFaker dataGenerate = new DataFaker();
 
     @BeforeEach
     public void openHomePageAndCloseCookiesAndClickEnter() {
@@ -23,7 +25,7 @@ public class TestValidationLoginPage {
 
     @Test
     public void testMinBoundaryPassword(){
-        loginPage.inputPassword("ddd");
+        loginPage.inputPassword(dataGenerate.getMinBoundaryPassword());
         loginPage.inputEmail(loginPage.testEmail);
         loginPage.clickButtonLogin();
         Assertions.assertEquals("Количество символов должно быть не менее 4.",loginPage.getTextErrorMessagePassword());
@@ -31,7 +33,7 @@ public class TestValidationLoginPage {
 
     @Test
     public void testMaxBoundaryPassword(){
-        loginPage.inputPassword("qqqqqqqqqqqqqqqqqqqqqqqqqeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwweeeeeeeeeeeeeeeeeeeeeeeeeqq");
+        loginPage.inputPassword(dataGenerate.getMaxBoundaryPassword());
         loginPage.inputEmail(loginPage.testEmail);
         loginPage.clickButtonLogin();
         Assertions.assertEquals("Количество символов в поле Пароль не может превышать 255.",loginPage.getTextErrorMessagePassword());
@@ -39,7 +41,7 @@ public class TestValidationLoginPage {
 
     @Test
     public void testMaxBoundaryEmail(){
-        loginPage.inputEmail("qQqqqqqqqqqqqqqqqqqqqqqqqqeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqwwwwwwwwwwwwwwwwwwwwwwwwww5wwwweeeeeeeeeeeeeeeeeeeeeeeeeqqqqqqqe@rambler.ru");
+        loginPage.inputEmail(dataGenerate.getMaxBoundaryEmail());
         loginPage.inputPassword(loginPage.testPassword);
         loginPage.clickButtonLogin();
         Assertions.assertEquals("Количество символов в поле E-Mail адрес не может превышать 255.",loginPage.getTextErrorMessageEmail());
