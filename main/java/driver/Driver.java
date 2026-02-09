@@ -46,4 +46,8 @@ public class Driver {
     public static String waitAndGetTextByAttribute(By xpath, String attribute){
         return wait(xpath).getAttribute(attribute);
     }
+
+    public static void waitAndInputText(By xpath, String text){
+        wait(xpath).sendKeys(text);
+    }
 }
