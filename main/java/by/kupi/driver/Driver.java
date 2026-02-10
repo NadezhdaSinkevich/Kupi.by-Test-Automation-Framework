@@ -1,4 +1,4 @@
-package by.kupi.ui.driver;
+package by.kupi.driver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

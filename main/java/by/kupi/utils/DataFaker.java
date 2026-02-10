@@ -1,4 +1,4 @@
-package by.kupi.ui.utils;
+package by.kupi.utils;
 
 import net.datafaker.Faker;
 
