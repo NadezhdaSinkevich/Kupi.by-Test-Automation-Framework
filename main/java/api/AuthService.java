@@ -11,6 +11,17 @@ public class AuthService {
     public String urlLoginPage = "https://kupi.by/user/auth";
     private Response response;
 
+    public String errorMessageMaxBoundaryPassword = "Количество символов в поле Пароль не может превышать 255.";
+    public String errorMessageMaxBoundaryEmail = "Количество символов в поле E-Mail адрес не может превышать 255.";
+    public String errorMessageEmptyPassword = "Поле Пароль обязательно для заполнения.";
+    public String errorMessageEmptyEmail = "Поле E-Mail адрес обязательно для заполнения.";
+    public String errorMessageIncorrectEmail = "Выбранное значение для E-Mail адрес некорректно.";
+    public String errorMessageIncorrectPassword = "Выбранное значение для Пароль ошибочно.";
+    public String errorMessageIncorrectFormatEmail = "Поле E-Mail адрес должно быть действительным электронным адресом.";
+
+    public String testEmail = "hehe@rambler.ru";
+    public String testPassword = "qwerty123";
+
     private Map<String, String> getQueryParams() {
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("t", "1770295767129");
@@ -50,8 +61,12 @@ public class AuthService {
         return  response.body().jsonPath().getString("message");
     }
 
-    public String getResponseError(){
-        return  response.body().jsonPath().getString("errors");
+    public String getResponseErrorEmail(){
+        return  response.body().jsonPath().getString("errors.email[0]");
+    }
+
+    public String getResponseErrorPassword(){
+        return  response.body().jsonPath().getString("errors.password[0]");
     }
 
     public int getStatusCode() {
