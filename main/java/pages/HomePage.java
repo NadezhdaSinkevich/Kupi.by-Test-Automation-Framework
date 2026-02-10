@@ -1,6 +1,8 @@
 package pages;
 
 import driver.Driver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,20 +18,24 @@ public class HomePage {
     public String textButtonLogin = "Войти";
 
     public WebDriver driver;
+    private static Logger logger = LogManager.getLogger();
 
     public HomePage() {
         this.driver = Driver.getDriver();
     }
 
     public void open(){
+        logger.info("open home page");
         driver.get(homepageUrl);
     }
 
     public void acceptCookie(){
+        logger.info("accept cookie");
         Driver.waitAndClick(cookieAcceptButtonPath);
     }
 
     public void clickButtonLogin(){
+        logger.info("click button login");
         Driver.waitAndClick(buttonLoginPath);
     }
 
