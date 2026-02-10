@@ -1,11 +1,11 @@
-package kupi_by.ui;
+package by.kupi.ui;
 
-import driver.Driver;
+import by.kupi.ui.driver.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.HomePage;
+import by.kupi.ui.pages.HomePage;
 
 public class TestHomePage {
     public HomePage homePage;

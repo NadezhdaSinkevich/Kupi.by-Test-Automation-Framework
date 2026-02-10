@@ -1,21 +1,22 @@
-package kupi_by.api;
+package by.kupi.api;
 
-import api.AuthService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
-import utils.DataFaker;
+import by.kupi.ui.utils.DataFaker;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestAuthService {
-    private AuthService authService = new AuthService();
-    private DataFaker dataGenerate = new DataFaker();
+    private AuthService authService;
+    private DataFaker dataGenerate;
     private static Logger logger = LogManager.getLogger(TestAuthService.class);
 
     @BeforeEach
     void beginTest(TestInfo testInfo) {
+        authService = new AuthService();
+        dataGenerate = new DataFaker();
         logger.info("START TEST: [{}]", testInfo.getDisplayName());
     }
 
@@ -94,7 +95,6 @@ public class TestAuthService {
         Assertions.assertEquals(200, authService.getStatusCode());
     }
 
-    @Disabled
     @Test
     @DisplayName("testSpacesInPassword")
     public void testSpacesInPassword() {

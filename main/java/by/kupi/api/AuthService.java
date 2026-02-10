@@ -1,4 +1,4 @@
-package api;
+package by.kupi.api;
 
 import io.restassured.response.*;
 import org.apache.logging.log4j.LogManager;
