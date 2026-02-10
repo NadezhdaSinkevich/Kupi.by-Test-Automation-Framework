@@ -1,6 +1,6 @@
-package pages;
+package by.kupi.ui.pages;
 
-import driver.Driver;
+import by.kupi.ui.driver.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
