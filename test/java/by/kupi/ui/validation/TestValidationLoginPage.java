@@ -1,13 +1,13 @@
-package by.kupi.validation;
+package by.kupi.ui.validation;
 
-import by.kupi.ui.driver.Driver;
+import by.kupi.driver.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import by.kupi.ui.pages.HomePage;
 import by.kupi.ui.pages.LoginPage;
-import by.kupi.ui.utils.DataFaker;
+import by.kupi.utils.DataFaker;
 
 public class TestValidationLoginPage {
     private LoginPage loginPage;
