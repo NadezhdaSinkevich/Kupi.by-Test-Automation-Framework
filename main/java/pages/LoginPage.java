@@ -1,6 +1,8 @@
 package pages;
 
 import driver.Driver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -35,8 +37,10 @@ public class LoginPage {
 
 
     private WebDriver driver;
+    private static Logger logger = LogManager.getLogger();
 
     public LoginPage() {
+        logger.info("open login page");
         this.driver = Driver.getDriver();
     }
 
@@ -81,6 +85,7 @@ public class LoginPage {
     }
 
     public void clickButtonLogin(){
+        logger.info("click button login");
         Driver.waitAndClick(buttonLoginPath);
     }
 
@@ -93,14 +98,17 @@ public class LoginPage {
     }
 
     public void clickButtonCloseLoginForm(){
+        logger.info("click button close login form");
         Driver.waitAndClick(buttonCloseLoginPagePath);
     }
 
     public void clickButtonForgotPassword(){
+        logger.info("click button forgot password");
         Driver.waitAndClick(buttonForgotPasswordPath);
     }
 
     public void clickButtonRegistration(){
+        logger.info("click button registration");
         Driver.waitAndClick(buttonRegistrationPath);
     }
 
