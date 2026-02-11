@@ -2,7 +2,6 @@ package by.kupi.ui;
 
 import by.kupi.driver.Driver;
 import by.kupi.ui.pages.HomePage;
-import by.kupi.ui.pages.LoginPage;
 import by.kupi.ui.pages.SearchPage;
 import by.kupi.utils.DataFaker;
 import org.junit.jupiter.api.AfterEach;
@@ -58,7 +57,7 @@ public class TestSearchPage {
     }
 
     @Test
-    public void testErrorMessageSearch(){
+    public void testIncorrectSearch(){
         searchPage.inputTextToSearch(dataGenerate.getCorrectPassword());
         Assertions.assertEquals(searchPage.errorMessageText,searchPage.getTextErrorMessageSearch(),"error message incorrect");
     }
@@ -74,6 +73,35 @@ public class TestSearchPage {
     public void testClickButtonSearchDropdown(){
         searchPage.inputTextToSearch(dataGenerate.getCorrectPassword());
         searchPage.clickButtonSearchDropdowm();
+    }
+
+    @Test
+    public void testElementSearch(){
+        searchPage.inputTextToSearch(searchPage.testElementTextForSearch);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(searchPage.testElementImageForSearch,searchPage.getImageElementDropdowmPath()),
+                () -> Assertions.assertEquals(searchPage.testElementPriceForSearch,searchPage.getPriceElementDropdowm()),
+                () -> Assertions.assertEquals(searchPage.testElementTextForSearch,searchPage.getTextElementDropdownPath())
+        );
+    }
+
+    @Test
+    public void testCategoriesSearch(){
+        searchPage.inputTextToSearch(searchPage.testCategoriesForSearch);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(searchPage.testCategoriesHrefForSearch,searchPage.getCategoriesSearchHref()),
+                () -> Assertions.assertEquals(searchPage.testCategoriesForSearch,searchPage.getTextCategoriesSearch())
+        );
+    }
+
+    @Test
+    public void testSubcategoriesSearch(){
+        searchPage.inputTextToSearch(searchPage.testSubcategoriesForSearch);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(searchPage.testSubcategoriesElementImageForSearch,searchPage.getImageElementDropdowmPath()),
+                () -> Assertions.assertEquals(searchPage.testSubcategoriesElementPriceForSearch,searchPage.getPriceElementDropdowm()),
+                () -> Assertions.assertEquals(searchPage.testSubcategoriesElementTextForSearch,searchPage.getTextElementDropdownPath())
+        );
     }
 
     @AfterEach
