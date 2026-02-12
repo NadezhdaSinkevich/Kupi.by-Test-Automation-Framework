@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSearchService {
     private SearchService searchService;
-    private static Logger logger = LogManager.getLogger(TestAuthService.class);
+    private static Logger logger = LogManager.getLogger(TestSearchService.class);
 
     @BeforeEach
     void beginTest(TestInfo testInfo) {
@@ -17,8 +17,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testElementSearch")
     public void testElementSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -26,8 +27,9 @@ public class TestSearchService {
         );
     }
     @Test
-    @DisplayName("test")
+    @DisplayName("testCategoriesSearch")
     public void testCategoriesSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testCategoriesForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -36,8 +38,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testSubcategoriesSearch")
     public void testSubcategoriesSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testSubcategoriesForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -47,8 +50,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testEmptySearch")
     public void testEmptySearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest("");
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -57,8 +61,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testOutStockSearch")
     public void testOutStockSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementOutStockForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -68,8 +73,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testElementPartialForSearch")
     public void testElementPartialForSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementPartialForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -79,8 +85,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testElementRegistrDependencyForSearch")
     public void testElementRegistrDependencyForSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementRegistrDependencyForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -90,8 +97,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testDoubleElementForSearch")
     public void testDoubleElementForSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementForSearch+searchService.testElementForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -101,8 +109,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testIncorrectSymbolsForSearch")
     public void testIncorrectSymbolsForSearch() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testIncorrectSymbolsForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -111,8 +120,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testElementSpaces")
     public void testElementSpaces() {
+        logger.info("prepare data to send request");
         searchService.doRequest("      "+searchService.testElementForSearch + "        ");
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
@@ -122,8 +132,9 @@ public class TestSearchService {
     }
 
     @Test
-    @DisplayName("test")
+    @DisplayName("testElementSpacesIn")
     public void testElementSpacesIn() {
+        logger.info("prepare data to send request");
         searchService.doRequest(searchService.testElementSpacesForSearch);
         assertAll(
                 () -> assertEquals(200, searchService.getStatusCode()),
