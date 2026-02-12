@@ -1,13 +1,15 @@
 package by.kupi.ui;
 
-import by.kupi.ui.driver.Driver;
+import by.kupi.driver.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import by.kupi.ui.pages.HomePage;
 import by.kupi.ui.pages.LoginPage;
-import by.kupi.ui.utils.DataFaker;
+import by.kupi.utils.DataFaker;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class TestLoginPage {
 
@@ -86,6 +88,18 @@ public class TestLoginPage {
     @Test
     public void testIconCloseLoginPageHref(){
         Assertions.assertEquals(loginPage.iconCloseLoginPageHref,loginPage.getIconCloseLoginPageHref(),"href Icon Close Button incorrect");
+    }
+
+    @Test
+    public void testCloseForm(){
+        loginPage.inputEmail(dataGenerate.getCorrectEmail());
+        loginPage.inputPassword(dataGenerate.getCorrectPassword());
+        loginPage.clickButtonCloseLoginForm();
+        homePage.clickButtonLogin();
+        assertAll(
+                () -> Assertions.assertEquals("", loginPage.getTextFieldLogin()),
+                () -> Assertions.assertEquals("", loginPage.getTextFieldPassword())
+        );
     }
 
     @AfterEach

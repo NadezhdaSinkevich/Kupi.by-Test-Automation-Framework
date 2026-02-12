@@ -1,6 +1,6 @@
 package by.kupi.ui.pages;
 
-import by.kupi.ui.driver.Driver;
+import by.kupi.driver.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -114,5 +114,13 @@ public class LoginPage {
 
     public String getIconCloseLoginPageHref(){
         return Driver.waitAndGetTextByAttribute(iconCloseLoginPagePath,"href");
+    }
+
+    public String getTextFieldLogin(){
+        return Driver.waitAndGetTextByAttribute(emailPath,"value");
+    }
+
+    public String getTextFieldPassword(){
+        return Driver.waitAndGetTextByAttribute(passwordPath,"value");
     }
 }
