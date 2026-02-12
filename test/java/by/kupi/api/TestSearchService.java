@@ -147,5 +147,10 @@ public class TestSearchService {
     void closeTest(TestInfo testInfo) {
         logger.info("FINISH TEST: [{}]", testInfo.getDisplayName());
         logger.info("*********************************************");
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
